@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<esper-configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.espertech.com/schema/esper"
+	xsi:schemaLocation="http://www.espertech.com/schema/esper http://www.espertech.com/schema/esper/esper-configuration-2.0.xsd">
+	<event-type name="EventoNagios" class="com.csg.model.nagios.EventoNagios" />
+	<event-type name="EventoZabbix" class="com.csg.model.zabbix.EventoZabbix" />
+	<event-type name="EventoLegado" class="com.csg.model.legado.EventoLegado" />
+	<event-type name="EventoCTM" class="com.csg.model.ctm.EventoCTM" />
+	<event-type name="EventoBasico" class="com.csg.model.EventoBasico" />
+
+	<auto-import import-name="org.csg.util.*" />
+
+
+	<!-- Informe aqui a conexao com banco, que sera usada para fazer joins com 
+		os streams de eventos -->
+	<database-reference name="db1">
+		<drivermanager-connection class-name="org.postgresql.Driver"
+			url="jdbc:postgresql://127.0.0.1:5432/cristian" user="postgres"
+			password="centralit">
+			<!-- <connection-arg name="user" value="myuser" /> <connection-arg name="password" 
+				value="mypassword" /> <connection-arg name="somearg" value="someargvalue" 
+				/> -->
+		</drivermanager-connection>
+		<connection-lifecycle value="retain" />
+		<!-- Retains connection associated with a statement, closing a connection 
+			only when a statement is stopped -->
+		<expiry-time-cache max-age-seconds="60"
+			purge-interval-seconds="120" ref-type="weak" />
+		<!-- Configures an optional time-based cache with a maximum age in seconds 
+			and a purge interval, and an optional reference strategy -->
+	</database-reference>
+
+	<engine-settings>
+		<defaults>
+			<execution prioritized="false" />
+		</defaults>
+		<threading>
+			<listener-dispatch preserve-order="true"
+				timeout-msec="1000" locking="spin" />
+			<insert-into-dispatch preserve-order="true"
+				timeout-msec="100" locking="spin" />
+			<internal-timer enabled="true" msec-resolution="200" />
+		</threading>
+
+	</engine-settings>
+</esper-configuration>	
