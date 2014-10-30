@@ -48,7 +48,8 @@ public class MessageRestService {
 	
 
 	
-	@POST
+	@RolesAllowed("ADMIN")
+	@PUT
 	@Path("/xmlCTM")
 	@Consumes("application/xml")
 	public Response receberXMLCTM(String xml) {

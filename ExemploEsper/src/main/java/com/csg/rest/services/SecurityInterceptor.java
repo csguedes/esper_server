@@ -83,8 +83,8 @@ public class SecurityInterceptor implements PreProcessInterceptor
 	    final String password = tokenizer.nextToken();
 	    
 	    //Verifying Username and password
-	    System.out.println(username);
-	    System.out.println(password);
+//	    System.out.println(username);
+//	    System.out.println(password);
 		
 	    //Verify user access
 		if(method.isAnnotationPresent(RolesAllowed.class))
@@ -107,14 +107,14 @@ public class SecurityInterceptor implements PreProcessInterceptor
 	{
 		boolean isAllowed = false;
 		
-		//Step 1. Fetch password from database and match with password in argument
-		//If both match then get the defined role for user from database and continue; else return isAllowed [false]
-		//Access the database and do this part yourself
+		// TODO: Step 1. Obter senha do banco de dados e comprar com senha no argumento 
+
+		
 		//String userRole = userMgr.getUserRole(username);
 		String userRole = "ADMIN";
 		
 		//Step 2. Verify user role
-		if(rolesSet.contains(userRole))
+		if((rolesSet.contains(userRole)) && password.equalsIgnoreCase("1"))
 		{
 			isAllowed = true;
 		}

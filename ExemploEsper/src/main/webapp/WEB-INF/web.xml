@@ -5,38 +5,38 @@
 	version="2.5">
 	<display-name>EsperServer</display-name>
 
-	<!-- enable the Asynchronous Job Service -->
+	<!-- enable the Asynchronous Job Service 
 	<context-param>
 		<param-name>resteasy.async.job.service.enabled</param-name>
 		<param-value>true</param-value>
-	</context-param>
+	</context-param>-->
 
 	<!-- The next context parameters are all optional. Their default values 
 		are shown as example param-values -->
 
-	<!-- How many jobs results can be held in memory at once? -->
+	<!-- How many jobs results can be held in memory at once? 
 	<context-param>
 		<param-name>resteasy.async.job.service.max.job.results</param-name>
 		<param-value>100</param-value>
-	</context-param>
+	</context-param>-->
 
-	<!-- Maximum wait time on a job when a client is querying for it -->
+	<!-- Maximum wait time on a job when a client is querying for it 
 	<context-param>
 		<param-name>resteasy.async.job.service.max.wait</param-name>
 		<param-value>300000</param-value>
-	</context-param>
+	</context-param>-->
 
-	<!-- Thread pool size of background threads that run the job -->
+	<!-- Thread pool size of background threads that run the job 
 	<context-param>
 		<param-name>resteasy.async.job.service.thread.pool.size</param-name>
 		<param-value>100</param-value>
-	</context-param>
+	</context-param>-->
 
-	<!-- Set the base path for the Job uris -->
+	<!-- Set the base path for the Job uris 
 	<context-param>
 		<param-name>resteasy.async.job.service.base.path</param-name>
 		<param-value>/asynch/jobs</param-value>
-	</context-param>
+	</context-param>-->
 
 
 </web-app>
